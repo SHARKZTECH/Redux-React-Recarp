@@ -11,3 +11,17 @@ export const getProducts = () => {
     });
   };
 };
+
+export const getProduct = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: "REQUEST_PRODUCT", loading: true });
+
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const data = await res.json();
+
+    dispatch({
+      type: "GET_PRODUCT",
+      payload: data
+    });
+  };
+};
