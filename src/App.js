@@ -2,22 +2,24 @@ import "./styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Card, Row, Col, Container } from "react-bootstrap";
+import { getProducts } from "./redux/actions";
+
 export default function App() {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
 
-  const getProducts = async () => {
-    const res = await fetch("https://fakestoreapi.com/products");
-    const data = await res.json();
+  // const getProducts = async () => {
+  //   const res = await fetch("https://fakestoreapi.com/products");
+  //   const data = await res.json();
 
-    dispatch({
-      type: "GET_PRODUCTS",
-      payload: data
-    });
-  };
+  //   dispatch({
+  //     type: "GET_PRODUCTS",
+  //     payload: data
+  //   });
+  // };
 
   useEffect(() => {
-    getProducts();
+    dispatch(getProducts());
   });
 
   return (

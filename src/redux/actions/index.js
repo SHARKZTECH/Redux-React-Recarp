@@ -1,6 +1,6 @@
-export const getproducts = () => {
+export const getProducts = () => {
   return async (dispatch) => {
-    dispatch({ type: "REQUEST_PRODUCTS" });
+    dispatch({ type: "REQUEST_PRODUCTS", loading: true });
 
     const res = await fetch("https://fakestoreapi.com/products");
     const data = await res.json();
